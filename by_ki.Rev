@@ -83,10 +83,11 @@ idx = 1
 for (k in 2:maxK) {
   matrixByState[k] <- allChars
   matrixByState[k].setNumStatesPartition(k)
+#  matrixByState[k].removeExcludedCharacters()
   nc = matrixByState[k].nchar()
   
   if (nc > 0) {
-    nc; " characters in partition "; idx; " ("; k; " states)."; 
+    print(nc, " characters in partition ", idx, " (", k, " states).")
     q[idx] <- fnJC(k) # Generate Q allChars based on Mk model
     m_morph[idx] ~ dnPhyloCTMC(
       tree = phylogeny,
